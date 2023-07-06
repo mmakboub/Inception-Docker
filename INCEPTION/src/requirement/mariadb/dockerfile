@@ -1,0 +1,12 @@
+FROM debian:buster
+
+RUN : apt update
+RUN : apt-get install -y mariadb-server
+# L'option -y utilisée avec la commande apt-get install dans un Dockerfile indique à la commande de répondre automatiquement "oui" à toutes les questions de confirmation qui pourraient être posées lors de l'installation des paquets.
+
+ 
+COPY : conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
+
+EXPOSE : 443
+
+CMD ["mariadb", "-g", "daemon off;"]

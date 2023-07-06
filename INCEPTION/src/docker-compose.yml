@@ -1,0 +1,49 @@
+version : 3
+
+services:
+
+  nginx:
+    hostname: nginx
+    network: 
+    inception
+    build :
+      context: ./requirement
+      dockerfile: ./nginx/Dockerfile
+    depends_on :
+      wordpress
+    ports:
+      "443:443"
+    restart: always
+    volumes:
+      wordpress:/var/www/html
+    envirement: .env
+  mariadb:
+    hostname: mariadb
+    network: 
+    inception
+    build :
+      context: ./requirement
+      dockerfile: ./mariadb/Dockerfile
+    restart: always
+    volumes:
+      wordpress:/var/lib/mysql
+    envirement: .env
+    #Par défaut, MariaDB utilise le port 3306 pour les connexions TCP/IP.
+  wordpress:
+    hostname: wordpress
+    network: 
+    inception
+    build :
+      context: ./requirement
+      dockerfile: ./wordpress/Dockerfile
+    restart: always
+    volumes:
+      wordpress:/var/www/html
+    envirement: .env
+    depends_on :
+      mariadb
+
+volumes:
+
+networks:
+

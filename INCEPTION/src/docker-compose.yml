@@ -44,6 +44,22 @@ services:
       mariadb
 
 volumes:
-
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      type: none									
+			o: bind
+			device: /home/mmakboub/data/mariadb
+    wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      type: none									
+			o: bind
+			device: /home/mmakboub/data/wordpress
 networks:
+  inception:
+    name: inception
+    driver: bridge
 

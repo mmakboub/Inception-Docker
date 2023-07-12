@@ -1,0 +1,21 @@
+what is docker ??
+
+docker is an open source standalone application which works as an engine used to run containerized application .it is installing on ur operating system .preferably on linus but can be also installed on windows and macos
+
+An application running in a container is isolated from the rest of the systeme and from other container but gives the illusion of running in its own os instance  
+
+multiple docker container can be run on the single operating systeme simultaneously you can amanage those container with docker 
+
+docker application run in containers taht can be used on a laptop  premises pr cloud..
+
+so simply we can say tha docker is a container management service
+
+but what is docker container ??
+container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another
+
+containerization been around for a long time but it was introduced in a different way by docker 
+
+it packages application as images that can contain everything needed to run them : code runtime environment , libraries and configuration.
+
+a docker container image is a lightweight , standalone , executable package of software that includes everything needed to run an application :code , runtime , system tools , system libraries, and settings
+ 

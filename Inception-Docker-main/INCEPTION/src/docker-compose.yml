@@ -4,8 +4,8 @@ services:
   nginx:
     hostname: nginx
     build:
-      context: ./requirement
-      dockerfile: ./nginx/Dockerfile
+      context: ./requirement/nginx
+      # dockerfile: ./nginx/Dockerfile
     depends_on:
       - wordpress
     ports:
@@ -31,8 +31,8 @@ services:
   wordpress:
     hostname: wordpress
     build:
-      context: ./requirement
-      dockerfile: ./wordpress/Dockerfile
+      context: ./requirement/wordpress
+      # dockerfile: ./wordpress/Dockerfile
     restart: always
     volumes:
       - mariadb:/var/lib/mysql

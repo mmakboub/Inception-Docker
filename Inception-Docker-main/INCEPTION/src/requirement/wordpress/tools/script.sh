@@ -1,6 +1,6 @@
  #!/bin/bash
 wp core download --allow-root --version=6.2.2
-wp config set DB_NAME "wordpress" --allow-root
+wp  creat config set DB_NAME "wordpress" --allow-root
 wp config set DB_USER "mmakboub" --allow-root
 wp config set DB_PASSWORD "azerty321QWE" --allow-root
 wp config set DB_HOST "mariadb" --allow-root

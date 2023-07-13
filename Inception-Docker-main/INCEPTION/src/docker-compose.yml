@@ -1,63 +1,62 @@
-version : 3
+version : '3'
 
 services:
-
   nginx:
     hostname: nginx
-    network: 
-    inception
-    build :
+    build:
       context: ./requirement
       dockerfile: ./nginx/Dockerfile
-    depends_on :
-      wordpress
+    depends_on:
+      - wordpress
     ports:
-      "443:443"
+      - "443:443"
     restart: always
     volumes:
-      wordpress:/var/www/html
-    envirement: .env
+      - wordpress:/var/www/html
+    environment:
+      - env_file=.env
+
   mariadb:
     hostname: mariadb
-    network: 
-    inception
-    build :
-      context: ./requirement
-      dockerfile: ./mariadb/Dockerfile
+    build:
+      context: ./requirement/mariadb
+      # dockerfile: ./mariadb/Dockerfile
     restart: always
     volumes:
-      wordpress:/var/lib/mysql
-    envirement: .env
+      - mariadb:/var/lib/mysql
+    environment:
+      - env_file=.env
     #Par défaut, MariaDB utilise le port 3306 pour les connexions TCP/IP.
+
   wordpress:
     hostname: wordpress
-    network: 
-    inception
-    build :
+    build:
       context: ./requirement
       dockerfile: ./wordpress/Dockerfile
     restart: always
     volumes:
-      wordpress:/var/www/html
-    envirement: .env
-    depends_on :
-      mariadb
+      - mariadb:/var/lib/mysql
+    environment:
+      - env_file=.env
+    depends_on:
+      - mariadb
 
 volumes:
   mariadb:
     name: mariadb
     driver: local
     driver_opts:
-      type: none									
-			o: bind
-			device: /home/mmakboub/data/mariadb
-    wordpress:
+      type: none
+      o: bind
+      device: /Users/mmakboub/Desktop/mariadb
+  wordpress:
     name: wordpress
     driver: local
     driver_opts:
-      type: none									
-			o: bind
-			device: /home/mmakboub/data/wordpress
+      type: none
+      o: bind
+      device: /Users/mmakboub/Desktop/wordpress
+
 networks:
   inception:
     name: inception

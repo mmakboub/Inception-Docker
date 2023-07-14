@@ -35,7 +35,7 @@ services:
       # dockerfile: ./wordpress/Dockerfile
     restart: always
     volumes:
-      - mariadb:/var/lib/mysql
+      - wordpress:/var/www/html/
     environment:
       - env_file=.env
     depends_on:
@@ -51,11 +51,6 @@ volumes:
       device: /Users/mmakboub/Desktop/mariadb
   wordpress:
     name: wordpress
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /Users/mmakboub/Desktop/wordpress
 
 networks:
   inception:

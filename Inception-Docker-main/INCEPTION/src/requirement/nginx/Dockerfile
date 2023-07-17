@@ -3,7 +3,7 @@ FROM debian:buster
 RUN  apt-get update -y && apt-get install -y nginx openssl 
 # L'option -y utilisée avec la commande apt-get install dans un Dockerfile indique à la commande de répondre automatiquement "oui" à toutes les questions de confirmation qui pourraient être posées lors de l'installation des paquets.
 
-COPY  ./conf/nginx.conf  /etc/nginx/conf.d/nginx.conf 
+COPY  ./conf/nginx.conf  /etc/nginx/sites-available/default 
 COPY  ./tools/ssl_setting_up.sh .
 
 RUN chmod +x ssl_setting_up.sh

@@ -13,8 +13,8 @@ services:
     restart: always
     volumes:
       - wordpress:/var/www/html
-    environment:
-      - env_file=.env
+    env_file:
+      - .env
 
   mariadb:
     hostname: mariadb
@@ -24,8 +24,8 @@ services:
     restart: always
     volumes:
       - mariadb:/var/lib/mysql
-    environment:
-      - env_file=.env
+    env_file:
+      - .env
     #Par défaut, MariaDB utilise le port 3306 pour les connexions TCP/IP.
 
   wordpress:
@@ -36,8 +36,8 @@ services:
     restart: always
     volumes:
       - wordpress:/var/www/html/
-    environment:
-      - env_file=.env
+    env_file:
+      - .env
     depends_on:
       - mariadb
 
